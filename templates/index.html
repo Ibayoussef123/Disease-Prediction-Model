@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Symptom Selector</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<div class="grid-container">
+		<div class="box">
+
+			<h1>Symptom Selector</h1>
+
+			<div class="item">
+				<form method="POST" action="{{ url_for('predict') }}">
+					<div class="checkbox-container">
+					{% for i in range(132) %}
+					<label class="toggler-wrapper style-1">
+						<input type="checkbox" name="symptoms" value="{{ i }}"> 
+						<div class="toggler-slider">
+							<div class="toggler-knob"></div>
+							
+						</div>
+						<div class="badge">{{ symptoms[i] }}</div>
+					</label>
+					
+					{% endfor %}
+					</div>
+					<br>
+					<button class="button-26" type="submit">Predict</button>
+				</form>
+			</div>
+
+		</div>
+
+	</div>
+	
+	<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
